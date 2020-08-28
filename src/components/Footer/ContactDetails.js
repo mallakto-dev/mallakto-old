@@ -19,6 +19,10 @@ const StyledAddress = styled.address`
     & a:visited {
         color: #004530;
     }
+
+    @media(min-width: 768px) {
+       font-size: 1.2rem;
+  }
 `;
 
 

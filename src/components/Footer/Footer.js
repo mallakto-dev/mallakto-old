@@ -12,7 +12,13 @@ const StyledFooter = styled.footer`
     align-items: center;
     padding: 2rem;
     width: 100%;
-    background-color: #6dbd96; /*  #004530*/
+    background-color: #6dbd96;
+
+    @media(min-width: 768px) {
+       flex-direction: row;
+       justify-content: space-between;
+  }
+
 `;
 
 
