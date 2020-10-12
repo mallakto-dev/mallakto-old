@@ -1,33 +1,39 @@
 exports.createPages = async ({ actions: {createPage}, graphql }) => {
-    const results = await graphql(`
+    const result = await graphql(`
         {
-            allProductsJson {
+            allSanityProduct {
                 edges {
-                    node {
-                            category
-                            slug
+                  node {
+                    categories {
+                      slug {
+                        current
+                      }
                     }
+                    slug {
+                      current
+                    }
+                  }
                 }
-            }
+              }
         }
     `)
 
-    if(results.error) {
+    if(result.error) {
         console.log("something went wrong" + error);
         return;
     }
+    
+    const products = result.data.allSanityProduct.edges.map(({node}) => node);
 
-    results.data.allProductsJson.edges.forEach(edge => {
-        const product = edge.node;
+    products.forEach(product => {
 
         createPage({
-            path: `/products/${product.category}/${product.slug}`,
+            path: `/products/${product.categories[0].slug.current}/${product.slug.current}`,
             component: require.resolve('./src/templates/product-graphql.js'),
             context: {
-                category: product.category,
-                slug: product.slug
+                category: product.categories[0].slug.current,
+                slug: product.slug.current
             }
         });
-
-    })
+    });
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -68,6 +68,7 @@ const ListItemDropdown = styled(ListItem)`
 
     @media(min-width: 768px) {
        position: relative;
+       z-index: 10;
   }
 `;
 
@@ -82,9 +83,11 @@ const SubList = styled(List)`
         font-size: .9rem;
         flex-direction: column;
         position: absolute;
-        left: 1rem;
-        top: 1.8rem;
-        background-color:  #6dbd96;
+        left: 0rem;
+        top: 2rem;
+        background-color: #fffdfa;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border-top: 2px solid #004530;
         width: 14rem;
         padding: 0;
         list-style: none; 
@@ -93,7 +96,11 @@ const SubList = styled(List)`
             width: 100%;
 
             &:hover {
-            background-color: #72b056;
+            background-color: #004530;
+
+            a {
+                color: white;
+            }
         }
 
         }
@@ -103,6 +110,42 @@ const SubList = styled(List)`
 
 
 export const Menu = ( {isOpen} ) => {
+
+    const data = useStaticQuery(graphql`
+    {
+        allSanityCategory {
+            edges {
+                node {
+                    _id
+                    title
+                    slug {
+                        current
+                    }
+                    description
+                }
+            }
+      }
+    }
+    `);
+
+    const categories = data.allSanityCategory.edges.map(({node: category}) => {
+
+        if(category.title === 'Окара') {
+            // maybe not the most slick decision, but I think it's good to keep categories names short in api
+            return (
+                <ListItem key={category._id}>
+                    <Link to={`/${category.slug.current}`}>{category.description}</Link>
+                </ListItem>
+            )
+        }
+
+        return (
+            <ListItem key={category._id}>
+                <Link to={`/${category.slug.current}`}>{category.title}</Link>
+            </ListItem>
+        )
+    })
+
     return (
         <StyledNav isShown={isOpen} >
             <List>
@@ -112,20 +155,12 @@ export const Menu = ( {isOpen} ) => {
                 <ListItemDropdown>
                     Продукция
                         <SubList>
-                            <ListItem>
-                                <Link to="/">Тофу</Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link to="/">Сейтан</Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link to="/">Продукты из окары</Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link to="/">Сухие смеси</Link>
-                            </ListItem>
+                            { categories }
                         </SubList>
                 </ListItemDropdown>
+                <ListItem>
+                    <Link to="/about">О нас</Link>
+                </ListItem>
                 <ListItem>
                     <Link to="/">Контакты</Link>
                 </ListItem>

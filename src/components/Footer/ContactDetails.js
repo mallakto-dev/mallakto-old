@@ -9,6 +9,7 @@ const StyledAddress = styled.address`
     width: 60%;
     text-align: center;
     line-height: 1.5;
+    font-style: normal;
 
     & a {
         text-decoration: none;

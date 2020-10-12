@@ -1,7 +1,8 @@
 import React from 'react';
-
+import { Link } from 'gatsby';
 import logo from '../data/images/logo.svg';
 import styled from 'styled-components';
+
 
 
 
@@ -12,7 +13,9 @@ const Logo = styled.img`
 export const LogoBox = () => {
     return (
         <div>
-            <Logo src={logo} alt={logo} />
+            <Link to="/" >
+                <Logo src={logo} alt={"логотип Маллакто"} />
+            </Link>
         </div>
     )
 }

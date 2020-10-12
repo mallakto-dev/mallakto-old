@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 3rem;
+    width: 4.5rem;
     
 `;
 
@@ -15,10 +15,10 @@ export const SocialLinks = () => {
     return (
         <StyledDiv>
             <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mal_lakto">
-                <FontAwesomeIcon icon={faInstagram} />
+                <FontAwesomeIcon icon={faInstagram} size={'2x'}/>
             </a>
             <a target="_blank" rel="noopener noreferrer" href="https://vk.com/mallakto"> 
-                <FontAwesomeIcon icon={faVk} />
+                <FontAwesomeIcon icon={faVk} size={'2x'} />
             </a>
         </StyledDiv>
     )

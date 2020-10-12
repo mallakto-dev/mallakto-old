@@ -13,8 +13,14 @@ module.exports = {
         path: './src/data'
       }
     },
-    `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'dudbk6rk',
+        dataset: 'production',
+      },
+    },
   ]
 }

@@ -26,13 +26,23 @@ const GlobalStyles = createGlobalStyle`
         &:visited {
             color: #004530;
         }
+
+        &:hover {
+            color: #2c6855;
+        }
     }
 
 `;
 
 const Container = styled.main`
-    margin: 0 auto;
+    
+    width: 100%;
     padding: 0;
+
+    @media(min-width: 768px) { 
+        width: 80%;
+        margin: 0 auto;
+    }
 `;
 
 export const Layout = ({ children }) => {
