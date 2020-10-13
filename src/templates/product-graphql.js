@@ -4,7 +4,6 @@ import Image from "gatsby-image"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
-import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
 import { Counter } from "../components/Counter"
 import { priceToRubles } from '../utils/priceToRubles'
@@ -83,7 +82,7 @@ const Product = ({ data }) => {
   const priceInRub = priceToRubles(product.price);
 
   return (
-    <Layout>
+    <>
         <SEO />
       <StyledDivWrapper>
         <Image fluid={product.image.asset.fluid} alt={product.title} />
@@ -101,7 +100,7 @@ const Product = ({ data }) => {
       </StyledBtnBig>
         </StyledDiv>
       </StyledDivWrapper>
-    </Layout>
+    </>
   )
 }
 

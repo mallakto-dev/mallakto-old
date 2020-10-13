@@ -22,5 +22,11 @@ module.exports = {
         dataset: 'production',
       },
     },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout.js`),
+      },
+    },
   ]
 }

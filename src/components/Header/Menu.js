@@ -165,7 +165,9 @@ export const Menu = ( {isOpen} ) => {
                     <Link to="/">Контакты</Link>
                 </ListItem>
                 <ListItem>
-                    <FontAwesomeIcon icon={faShoppingCart} pull="right" />
+                    <Link to="/cart">
+                        <FontAwesomeIcon icon={faShoppingCart} size="lg"/>
+                    </Link>
                 </ListItem>
             </List>
         </StyledNav>

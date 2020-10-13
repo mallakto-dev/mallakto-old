@@ -1,15 +1,14 @@
 import React from "react";
-import { Layout } from "../components/Layout";
 import { SEO } from '../components/SEO';
 import { About } from '../components/About';
 import { ProductsGrid } from "../components/ProductsGrid/ProductsGrid";
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <SEO />
       <About showFull={ false } />
       <ProductsGrid />
-    </Layout>
+    </>
   )
 }

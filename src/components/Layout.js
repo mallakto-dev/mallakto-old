@@ -45,7 +45,7 @@ const Container = styled.main`
     }
 `;
 
-export const Layout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <>  
         <GlobalStyles />
@@ -56,4 +56,6 @@ export const Layout = ({ children }) => {
         <Footer />
     </>
   )
-}
+};
+
+export default Layout;
