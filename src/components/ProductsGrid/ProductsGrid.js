@@ -41,7 +41,7 @@ export const ProductsGrid = () => {
       allSanityProduct {
         edges {
           node {
-            _id
+            id
             title
             price
             weight
@@ -85,12 +85,13 @@ export const ProductsGrid = () => {
 
   const sortedProducts = data.allSanityProduct.edges.map(({node: product}) => {
 
-  const {_id, title, price, weight, slug, image, categories } = product;
+  const {id, title, price, weight, slug, image, categories } = product;
   const productUrl = `/products/${categories[0].slug.current}/${slug.current}`;
 
     return (
       <ProductCard
-        key={_id}
+        key={id}
+        id={id}
         title={title}
         price={price}
         weight={weight}

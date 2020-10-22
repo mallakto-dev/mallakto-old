@@ -1,20 +1,21 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import { SEO } from "../components/SEO"
-import { Counter } from "../components/Counter"
+import { QuantityPicker } from "../components/QuantityPicker"
 import { priceToRubles } from '../utils/priceToRubles'
+import { GlobalContext } from "../components/context/GlobalContextProvider"
 
-const StyledDivWrapper = styled.div`
+const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   margin: 2rem;
 
   & > * {
-    /* weird hack for gatsby-image, without flex-grow image disappears on a big screens */
+    /*  hack for gatsby-image, without flex-grow image disappears on a big screens */
     flex-grow: 1;
   }
 
@@ -29,7 +30,6 @@ const StyledDiv = styled.div`
 
     @media (min-width: 768px) {
         margin-left: 2rem;
-        padding: 1rem;
         width: 20%;
   }
 `
@@ -77,14 +77,29 @@ export const pageQuery = graphql`
 `
 
 const Product = ({ data }) => {
-  const product = data.sanityProduct
-
+  const [numberOfitems, setNumberOfItems] = useState(1);
+  const { addToCart } = useContext(GlobalContext);
+  const product = data.sanityProduct;
   const priceInRub = priceToRubles(product.price);
+
+  const increase = () => {
+    setNumberOfItems(numberOfitems + 1)
+  }
+
+  const decrease = () => {
+    if (numberOfitems > 1) {
+      setNumberOfItems(numberOfitems - 1)
+    }
+  }
+
+  const handleClick = () => {
+    addToCart({...product, quantity: numberOfitems});
+  }
 
   return (
     <>
         <SEO />
-      <StyledDivWrapper>
+      <StyledSection>
         <Image fluid={product.image.asset.fluid} alt={product.title} />
         <StyledDiv>
           <h1>{product.title}</h1>
@@ -93,13 +108,13 @@ const Product = ({ data }) => {
           <p><strong>Пищевая ценность:</strong> {product.nutritonal_facts}</p>
           <p><strong>Вес:</strong> {product.weight}</p>
           <p><strong>Срок Годности: </strong>{product.bestBefore}</p>
-          <Counter />
-          <StyledBtnBig>
+          <QuantityPicker isInline={false} increase={increase} decrease={decrease} numberOfItems={numberOfitems} isLabelDisplayed={true}/>
+          <StyledBtnBig onClick={handleClick}>
         {" "}
         Добавить в корзину <FontAwesomeIcon icon={faShoppingCart} />
       </StyledBtnBig>
         </StyledDiv>
-      </StyledDivWrapper>
+      </StyledSection>
     </>
   )
 }

@@ -8,14 +8,15 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const StyledNav = styled.nav`
     display: ${props => props.isShown ? 'flex' : 'none' };
+    position: fixed;
     align-items: center;
     justify-content: center;
     width: 100%;
     background-color: #6dbd96;
     height: 100%;
-    position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
 
 
     @media(min-width: 768px) {
@@ -162,7 +163,7 @@ export const Menu = ( {isOpen} ) => {
                     <Link to="/about">О нас</Link>
                 </ListItem>
                 <ListItem>
-                    <Link to="/">Контакты</Link>
+                    <Link to="/contacts">Контакты</Link>
                 </ListItem>
                 <ListItem>
                     <Link to="/cart">

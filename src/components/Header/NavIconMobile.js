@@ -5,7 +5,8 @@ import styled from 'styled-components';
 
 
 const Sandwich = styled.div`
-    position: absolute;
+    position: ${props => props.showClose ? "fixed" : "absolute"};
+    z-index: 1;
     top: 30px;
     right: 10px;
     cursor: pointer;

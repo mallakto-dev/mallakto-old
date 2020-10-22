@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: row;
+  /* width: ${props => props.isInline ? "1rem" : "100%"}; */
+  margin: ${props => props.isInline ? ".8rem" : "0"};
 `
 
 const StyledBtn = styled.button`
@@ -29,24 +31,13 @@ const StyledSpan = styled.span`
   border-bottom: 1px solid;
 `
 
-export const Counter = () => {
-  const [counter, setCounter] = useState(1)
-
-  const increase = () => {
-    setCounter(counter + 1)
-  }
-
-  const decrease = () => {
-    if (counter > 1) {
-      setCounter(counter - 1)
-    }
-  }
+export const QuantityPicker = ({ increase, decrease, numberOfItems, isLabelDisplayed, isInline }) => {
 
   return (
-    <StyledDiv>
-      <StyledParagraph>Количество</StyledParagraph>
+    <StyledDiv isInline={isInline}>
+      {isLabelDisplayed && <StyledParagraph>Количество</StyledParagraph>}
       <StyledBtn onClick={increase}>+</StyledBtn>
-      <StyledSpan>{counter}</StyledSpan>
+      <StyledSpan>{numberOfItems}</StyledSpan>
       <StyledBtn onClick={decrease}>-</StyledBtn>
     </StyledDiv>
   )

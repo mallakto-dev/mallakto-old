@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import { priceToRubles } from "../../utils/priceToRubles"
+import { GlobalContext } from "../context/GlobalContextProvider"
 
 const StyledListItem = styled.li`
   display: flex;
@@ -37,11 +38,29 @@ const StyledBtnBig = styled.button`
     font-size: .9rem
   }
 
+  &:hover {
+    opacity: .8;
+  }
+
 `
 
-export const ProductCard = ({ title, price, weight, image, altText, linkTo }) => {
+export const ProductCard = ({ id ,title, price, weight, image, altText, linkTo }) => {
+
+  const { addToCart } = useContext(GlobalContext);
 
   const priceInRub = priceToRubles(price);
+
+  const handleClick = () => {
+    addToCart({
+      id,
+      title,
+      price,
+      weight,
+      image,
+      altText,
+      quantity: 1
+    })
+  }
 
   return (
     <StyledListItem>
@@ -53,7 +72,7 @@ export const ProductCard = ({ title, price, weight, image, altText, linkTo }) =>
         <StyledParagraph>{weight}</StyledParagraph>
         <StyledParagraph>{priceInRub}</StyledParagraph>
       </StyledDiv>
-      <StyledBtnBig>
+      <StyledBtnBig onClick={handleClick}>
         {" "}
         Добавить в корзину <FontAwesomeIcon icon={faShoppingCart} />
       </StyledBtnBig>
