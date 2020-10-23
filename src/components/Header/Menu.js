@@ -135,14 +135,14 @@ export const Menu = ( {isOpen} ) => {
             // maybe not the most slick decision, but I think it's good to keep categories names short in api
             return (
                 <ListItem key={category._id}>
-                    <Link to={`/${category.slug.current}`}>{category.description}</Link>
+                    <Link to={`/products/${category.slug.current}`}>{category.description}</Link>
                 </ListItem>
             )
         }
 
         return (
             <ListItem key={category._id}>
-                <Link to={`/${category.slug.current}`}>{category.title}</Link>
+                <Link to={`/products/${category.slug.current}`}>{category.title}</Link>
             </ListItem>
         )
     })

@@ -4,8 +4,8 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
-import { priceToRubles } from "../../utils/priceToRubles"
-import { GlobalContext } from "../context/GlobalContextProvider"
+import { priceToRubles } from "../utils/priceToRubles"
+import { GlobalContext } from "./context/GlobalContextProvider"
 
 const StyledListItem = styled.li`
   display: flex;
