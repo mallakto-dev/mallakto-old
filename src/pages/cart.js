@@ -41,7 +41,7 @@ const StyledDivWrapper = styled.div`
   flex-direction: column;
   margin: 0.8rem;
 
-  @media (min-width: 500px) {
+  @media (min-width: 546px) {
     flex-direction: row;
     width: 60%;
     justify-content: space-around;
@@ -73,9 +73,14 @@ const StyledDivTotal = styled.div`
   align-items: flex-end;
 `
 
-const StyledDivDelete = styled.div`
+const StyledBtnDelete = styled.button`
   cursor: pointer;
+  background: none;
+  border: none;
   flex-grow: 0;
+  width: 1.2rem;
+  height: 1.4rem;
+  text-align: center;
 `
 
 const Cart = () => {
@@ -113,13 +118,11 @@ const Cart = () => {
           <span>{priceToRubles(item.price)}</span>
         </StyledDivWrapper>
 
-        <StyledDivDelete
+        <StyledBtnDelete
           onClick={() => removeFromCart(item)}
-          role="button"
-          tabIndex="0"
         >
           <FontAwesomeIcon icon={faTimes} />
-        </StyledDivDelete>
+        </StyledBtnDelete>
       </StyledDivItem>
     )
   })

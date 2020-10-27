@@ -1,45 +1,54 @@
-import React from 'react';
-import styled from 'styled-components';
-
-
-
+import React from "react"
+import styled from "styled-components"
 
 const Sandwich = styled.div`
-    position: ${props => props.showClose ? "fixed" : "absolute"};
-    z-index: 1;
-    top: 30px;
-    right: 10px;
-    cursor: pointer;
+  position: ${props => (props.showClose ? "fixed" : "absolute")};
+  z-index: 1;
+  top: 30px;
+  right: 10px;
+  cursor: pointer;
+  width: 2rem;
+  height: 0.4rem;
+  background-color: #004530;
+  transition: all ease-out 0.3s;
+  transform: ${props =>
+    props.showClose ? " rotate(45deg) translate(-.1rem,-.4rem)" : "none"};
+
+  &::before,
+  &::after {
+    content: "";
     width: 2rem;
-    height: .4rem;
+    height: 0.4rem;
     background-color: #004530;
-    transition: all ease-out .3s;
-    transform: ${props => props.showClose ? " rotate(45deg) translate(-.1rem,-.4rem)" : "none"};
-
-    &::before, &::after {
-        content: "";
-        width: 2rem;
-        height: .4rem;
-        background-color: #004530;
-        transition: all ease-out .3s;
-    }
-
-    &::before {
-        display: block;
-        transform: ${props => props.showClose ? "rotate(-90deg)" : "translate(0,-.7rem)"};
-    }
-
-    &::after{
-        transform: translate(0,.3rem);
-        display: ${props => props.showClose ? "none" : "block"};
-    }
-
-    @media(min-width: 768px) {
-        display: none;
+    transition: all ease-out 0.3s;
   }
 
-`;
+  &::before {
+    display: block;
+    transform: ${props =>
+      props.showClose ? "rotate(-90deg)" : "translate(0,-.7rem)"};
+  }
+
+  &::after {
+    transform: translate(0, 0.3rem);
+    display: ${props => (props.showClose ? "none" : "block")};
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
 
 export const NavIconMobile = ({ handleClick, showClose }) => {
-    return  <Sandwich onClick={handleClick} showClose={showClose}/> 
+  return (
+    <Sandwich
+      onClick={handleClick}
+      showClose={showClose}
+      role="button"
+      tabIndex="0"
+      aria-label="Menu"
+      role="button"
+      aria-controls="navigation"
+    />
+  )
 }

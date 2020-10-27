@@ -50,7 +50,6 @@ const StyledParagraph = styled.p`
   font-size: 1.1rem;
 `
 
-
 export const About = ({ showFull }) => {
   const textContent = showFull ? (
     <StyledDiv__text>

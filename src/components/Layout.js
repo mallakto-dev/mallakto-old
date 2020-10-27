@@ -1,9 +1,7 @@
-import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import { Header } from './Header/Header';
-import { Footer } from './Footer/Footer';
-
-
+import React from "react"
+import styled, { createGlobalStyle } from "styled-components"
+import { Header } from "./Header/Header"
+import { Footer } from "./Footer/Footer"
 
 const GlobalStyles = createGlobalStyle`
     
@@ -32,30 +30,27 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
-`;
+`
 
 const Container = styled.main`
-    
-    width: 100%;
-    padding: 0;
+  width: 100%;
+  padding: 0;
 
-    @media(min-width: 768px) { 
-        width: 80%;
-        margin: 0 auto;
-    }
-`;
+  @media (min-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+`
 
 const Layout = ({ children }) => {
   return (
-    <>  
-        <GlobalStyles />
-        <Header />
-        <Container>
-            {children}
-        </Container>
-        <Footer />
+    <>
+      <GlobalStyles />
+      <Header />
+      <Container>{children}</Container>
+      <Footer />
     </>
   )
-};
+}
 
-export default Layout;
+export default Layout

@@ -4,8 +4,7 @@ import styled from "styled-components"
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: row;
-  /* width: ${props => props.isInline ? "1rem" : "100%"}; */
-  margin: ${props => props.isInline ? ".8rem" : "0"};
+  margin: ${props => (props.isInline ? ".8rem" : "0")};
 `
 
 const StyledBtn = styled.button`
@@ -16,9 +15,9 @@ const StyledBtn = styled.button`
 `
 
 const StyledParagraph = styled.p`
-    line-height: 1;
-    margin-right: 1rem;
-`;
+  line-height: 1;
+  margin-right: 1rem;
+`
 
 const StyledSpan = styled.span`
   width: 2.6rem;
@@ -31,8 +30,13 @@ const StyledSpan = styled.span`
   border-bottom: 1px solid;
 `
 
-export const QuantityPicker = ({ increase, decrease, numberOfItems, isLabelDisplayed, isInline }) => {
-
+export const QuantityPicker = ({
+  increase,
+  decrease,
+  numberOfItems,
+  isLabelDisplayed,
+  isInline,
+}) => {
   return (
     <StyledDiv isInline={isInline}>
       {isLabelDisplayed && <StyledParagraph>Количество</StyledParagraph>}

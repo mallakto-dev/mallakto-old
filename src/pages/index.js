@@ -1,7 +1,7 @@
 import React from "react"
 import { SEO } from "../components/SEO"
 import { About } from "../components/About"
-import { ProductsGrid } from "../components/ProductsGrid/ProductsGrid"
+import { ProductsGrid } from "../components/ProductsGrid"
 
 export default function Home() {
   return (
