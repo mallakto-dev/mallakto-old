@@ -19,16 +19,25 @@ const StyledSection = styled.section`
     flex-grow: 1;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     flex-direction: row;
+    margin: 0;
     margin-bottom: 4rem;
   }
+`
+
+const StyledImage = styled(Image)`
+
+@media (min-width: 1200px) {
+    width: 25rem;
+  }
+
 `
 
 const StyledDiv = styled.div`
     width: 100%;
 
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
         margin-left: 2rem;
         width: 20%;
   }
@@ -49,6 +58,11 @@ const StyledBtnBig = styled.button`
   cursor: pointer;
   padding: 2px;
   margin: 1rem auto;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
 `
 
 export const pageQuery = graphql`
@@ -100,7 +114,7 @@ const Product = ({ data }) => {
     <>
         <SEO />
       <StyledSection>
-        <Image fluid={product.image.asset.fluid} alt={product.title} />
+        <StyledImage fluid={product.image.asset.fluid} alt={product.title} />
         <StyledDiv>
           <h1>{product.title}</h1>
           <StyledSpan>{priceInRub}</StyledSpan>

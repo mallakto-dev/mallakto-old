@@ -110,7 +110,7 @@ const SubList = styled(List)`
 `;
 
 
-export const Menu = ( {isOpen} ) => {
+export const Menu = ( {isOpen, handleClick} ) => {
 
     const data = useStaticQuery(graphql`
     {
@@ -134,14 +134,14 @@ export const Menu = ( {isOpen} ) => {
         if(category.title === 'Окара') {
             // maybe not the most slick decision, but I think it's good to keep categories names short in api
             return (
-                <ListItem key={category._id}>
+                <ListItem key={category._id} onClick={handleClick}>
                     <Link to={`/products/${category.slug.current}`}>{category.description}</Link>
                 </ListItem>
             )
         }
 
         return (
-            <ListItem key={category._id}>
+            <ListItem key={category._id} onClick={handleClick}>
                 <Link to={`/products/${category.slug.current}`}>{category.title}</Link>
             </ListItem>
         )
@@ -150,7 +150,7 @@ export const Menu = ( {isOpen} ) => {
     return (
         <StyledNav isShown={isOpen} >
             <List>
-                <ListItem>
+                <ListItem onClick={handleClick}>
                     <Link to="/">Главная</Link>
                 </ListItem>
                 <ListItemDropdown>
@@ -159,13 +159,13 @@ export const Menu = ( {isOpen} ) => {
                             { categories }
                         </SubList>
                 </ListItemDropdown>
-                <ListItem>
+                <ListItem onClick={handleClick} >
                     <Link to="/about">О нас</Link>
                 </ListItem>
-                <ListItem>
+                <ListItem onClick={handleClick} >
                     <Link to="/contacts">Контакты</Link>
                 </ListItem>
-                <ListItem>
+                <ListItem onClick={handleClick} >
                     <Link to="/cart">
                         <FontAwesomeIcon icon={faShoppingCart} size="lg"/>
                     </Link>

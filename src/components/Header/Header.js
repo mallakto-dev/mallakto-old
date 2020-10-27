@@ -25,16 +25,19 @@ const StyledHeader = styled.header`
 export const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const toggleMenu = (e) => {
-        e.preventDefault();
+    const toggleMenu = () => {
 
         setMenuOpen(!menuOpen);
+    }
+
+    const clickHandler = () => {
+            setMenuOpen(false) // closing menu on mobile after click on list item
     }
 
     return (
         <StyledHeader>
             <LogoBox />
-            <Menu isOpen={menuOpen}/>
+            <Menu isOpen={menuOpen} handleClick={clickHandler}/>
             <NavIconMobile handleClick={toggleMenu} showClose={menuOpen} />
         </StyledHeader>
     )

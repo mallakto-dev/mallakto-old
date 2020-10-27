@@ -15,7 +15,8 @@ const StyledListItem = styled.li`
 `
 
 const StyledDiv = styled.div`
-  height: 9.625rem;
+  height: 22.25rem; // just enough to keep all cards the same more or less
+  margin-bottom: 1rem;
 `
 
 const StyledParagraph = styled.p`
@@ -33,22 +34,27 @@ const StyledBtnBig = styled.button`
   padding: 2px;
   margin: 1rem auto;
 
-
-  @media(min-width: 768px) {
-    font-size: .9rem
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
   }
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
-
 `
 
-export const ProductCard = ({ id ,title, price, weight, image, altText, linkTo }) => {
+export const ProductCard = ({
+  id,
+  title,
+  price,
+  weight,
+  image,
+  altText,
+  linkTo,
+}) => {
+  const { addToCart } = useContext(GlobalContext)
 
-  const { addToCart } = useContext(GlobalContext);
-
-  const priceInRub = priceToRubles(price);
+  const priceInRub = priceToRubles(price)
 
   const handleClick = () => {
     addToCart({
@@ -58,17 +64,17 @@ export const ProductCard = ({ id ,title, price, weight, image, altText, linkTo }
       weight,
       image,
       altText,
-      quantity: 1
+      quantity: 1,
     })
   }
 
   return (
     <StyledListItem>
-      <Link to={linkTo}>
-      <Image fluid={image} alt={altText} />
-      </Link>
       <StyledDiv>
-        <h3>{title}</h3>
+        <Link to={linkTo}>
+          <Image fluid={image} alt={altText} />
+          <h3>{title}</h3>
+        </Link>
         <StyledParagraph>{weight}</StyledParagraph>
         <StyledParagraph>{priceInRub}</StyledParagraph>
       </StyledDiv>

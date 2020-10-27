@@ -48,6 +48,12 @@ const StyledDivWrapper = styled.div`
   }
 `
 
+const StyledDivTextWrap = styled.div`
+
+  width: 50%;
+
+`
+
 const StyledParagraph = styled.p`
   font-size: 1rem;
   font-weight: 600;
@@ -93,10 +99,12 @@ const Cart = () => {
 
   const cartContent = cartItems.map(item => {
     return (
-      <StyledDivItem>
+      <StyledDivItem key={item.id}>
         <StyledGatsbyImage fluid={item.image} alt={item.altText} />
         <StyledDivWrapper>
+          <StyledDivTextWrap>
           <StyledParagraph>{item.title}</StyledParagraph>
+          </StyledDivTextWrap>
           <StyledSpan>{item.weight}</StyledSpan>
           <QuantityPicker
             isInline={true}

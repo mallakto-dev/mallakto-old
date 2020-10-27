@@ -94,7 +94,7 @@ export const About = ({ showFull }) => {
 
   return (
     <StyledSection>
-      <StyledH2>О нас</StyledH2>
+      {!showFull && <StyledH2>О нас</StyledH2>}
       <StyledDiv__wrapper>
         <StyledImage src={cows} alt={"cows"} />
         {textContent}
