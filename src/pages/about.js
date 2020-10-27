@@ -5,7 +5,10 @@ import { About } from "../components/About"
 const AboutPage = () => {
   return (
     <>
-      <SEO />
+      <SEO
+        title="О нас | Mallakto"
+        description="Московский веган-кооператив Mallakto"
+      />
       <About showFull={true} />
     </>
   )

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import { SEO } from "../components/SEO"
 import { QuantityPicker } from "../components/QuantityPicker"
-import { priceToRubles } from '../utils/priceToRubles'
+import { priceToRubles } from "../utils/priceToRubles"
 import { GlobalContext } from "../components/context/GlobalContextProvider"
 
 const StyledSection = styled.section`
@@ -27,26 +27,24 @@ const StyledSection = styled.section`
 `
 
 const StyledImage = styled(Image)`
-
-@media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     width: 25rem;
   }
-
 `
 
 const StyledDiv = styled.div`
-    width: 100%;
+  width: 100%;
 
-    @media (min-width: 1200px) {
-        margin-left: 2rem;
-        width: 20%;
+  @media (min-width: 1200px) {
+    margin-left: 2rem;
+    width: 20%;
   }
 `
 
 const StyledSpan = styled.span`
-    font-weight: 600;
-    font-size: 1.4rem;
-`;
+  font-weight: 600;
+  font-size: 1.4rem;
+`
 
 const StyledBtnBig = styled.button`
   width: 100%;
@@ -62,7 +60,6 @@ const StyledBtnBig = styled.button`
   &:hover {
     opacity: 0.8;
   }
-
 `
 
 export const pageQuery = graphql`
@@ -91,10 +88,10 @@ export const pageQuery = graphql`
 `
 
 const Product = ({ data }) => {
-  const [numberOfitems, setNumberOfItems] = useState(1);
-  const { addToCart } = useContext(GlobalContext);
-  const product = data.sanityProduct;
-  const priceInRub = priceToRubles(product.price);
+  const [numberOfitems, setNumberOfItems] = useState(1)
+  const { addToCart } = useContext(GlobalContext)
+  const product = data.sanityProduct
+  const priceInRub = priceToRubles(product.price)
 
   const increase = () => {
     setNumberOfItems(numberOfitems + 1)
@@ -107,26 +104,41 @@ const Product = ({ data }) => {
   }
 
   const handleClick = () => {
-    addToCart({...product, quantity: numberOfitems});
+    addToCart({ ...product, quantity: numberOfitems })
   }
 
   return (
     <>
-        <SEO />
+      <SEO title={`${product.title} | Mallakto`} />
       <StyledSection>
         <StyledImage fluid={product.image.asset.fluid} alt={product.title} />
         <StyledDiv>
           <h1>{product.title}</h1>
           <StyledSpan>{priceInRub}</StyledSpan>
-          <p><strong>Состав:</strong> {product.ingredients}</p>
-          <p><strong>Пищевая ценность:</strong> {product.nutritonal_facts}</p>
-          <p><strong>Вес:</strong> {product.weight}</p>
-          <p><strong>Срок Годности: </strong>{product.bestBefore}</p>
-          <QuantityPicker isInline={false} increase={increase} decrease={decrease} numberOfItems={numberOfitems} isLabelDisplayed={true}/>
+          <p>
+            <strong>Состав:</strong> {product.ingredients}
+          </p>
+          <p>
+            <strong>Пищевая ценность:</strong> {product.nutritonal_facts}
+          </p>
+          <p>
+            <strong>Вес:</strong> {product.weight}
+          </p>
+          <p>
+            <strong>Срок Годности: </strong>
+            {product.bestBefore}
+          </p>
+          <QuantityPicker
+            isInline={false}
+            increase={increase}
+            decrease={decrease}
+            numberOfItems={numberOfitems}
+            isLabelDisplayed={true}
+          />
           <StyledBtnBig onClick={handleClick}>
-        {" "}
-        Добавить в корзину <FontAwesomeIcon icon={faShoppingCart} />
-      </StyledBtnBig>
+            {" "}
+            Добавить в корзину <FontAwesomeIcon icon={faShoppingCart} />
+          </StyledBtnBig>
         </StyledDiv>
       </StyledSection>
     </>

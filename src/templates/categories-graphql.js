@@ -91,7 +91,7 @@ const CategoryGrid = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO />
+      <SEO title={`${pageContext.title} | Mallakto`} />
       <StyledSection>
         <StyledH2>{categoryTitle}</StyledH2>
         <Grid>{products}</Grid>

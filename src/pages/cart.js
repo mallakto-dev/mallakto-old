@@ -49,9 +49,7 @@ const StyledDivWrapper = styled.div`
 `
 
 const StyledDivTextWrap = styled.div`
-
   width: 50%;
-
 `
 
 const StyledParagraph = styled.p`
@@ -103,7 +101,7 @@ const Cart = () => {
         <StyledGatsbyImage fluid={item.image} alt={item.altText} />
         <StyledDivWrapper>
           <StyledDivTextWrap>
-          <StyledParagraph>{item.title}</StyledParagraph>
+            <StyledParagraph>{item.title}</StyledParagraph>
           </StyledDivTextWrap>
           <StyledSpan>{item.weight}</StyledSpan>
           <QuantityPicker
@@ -128,7 +126,7 @@ const Cart = () => {
 
   return (
     <>
-      <SEO />
+      <SEO title="Корзина | Mallakto" />
       <StyledSection>
         <h1>Корзина</h1>
         {cartItems.length === 0 && <p>Корзина пуста</p>}
