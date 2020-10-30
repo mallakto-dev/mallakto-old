@@ -17,6 +17,7 @@ export const SocialLinks = () => {
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/mal_lakto"
+        aria-label="Ссылка на инстаграм Маллакто"
       >
         <FontAwesomeIcon icon={faInstagram} size={"2x"} />
       </a>
@@ -24,6 +25,7 @@ export const SocialLinks = () => {
         target="_blank"
         rel="noopener noreferrer"
         href="https://vk.com/mallakto"
+        aria-label="Ссылка на страницу ВКонтакте Маллакто"
       >
         <FontAwesomeIcon icon={faVk} size={"2x"} />
       </a>

@@ -19,15 +19,21 @@ const StyledParagraph = styled.p`
   margin-right: 1rem;
 `
 
-const StyledSpan = styled.span`
+const StyledInput = styled.input`
   width: 2.6rem;
   height: 2.6rem;
   font-size: 1.1rem;
   text-align: center;
   line-height: 2;
   margin: 0;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+  }
 `
 
 export const QuantityPicker = ({
@@ -37,12 +43,31 @@ export const QuantityPicker = ({
   isLabelDisplayed,
   isInline,
 }) => {
+  const handleChange = e => {
+    e.target.value = numberOfItems
+  }
+
   return (
     <StyledDiv isInline={isInline}>
       {isLabelDisplayed && <StyledParagraph>Количество</StyledParagraph>}
-      <StyledBtn onClick={increase}>+</StyledBtn>
-      <StyledSpan>{numberOfItems}</StyledSpan>
-      <StyledBtn onClick={decrease}>-</StyledBtn>
+      <StyledBtn
+        onClick={increase}
+        aria-label="Увеличить количество товара в корзине на один"
+      >
+        +
+      </StyledBtn>
+      <StyledInput
+        type="number"
+        value={numberOfItems}
+        onChange={handleChange}
+        aria-label="Количество товара которое будет добавленно в корзину"
+      />
+      <StyledBtn
+        onClick={decrease}
+        aria-label="Уменьшить количество товара в корзине на один"
+      >
+        −
+      </StyledBtn>
     </StyledDiv>
   )
 }

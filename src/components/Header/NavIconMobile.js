@@ -1,11 +1,25 @@
 import React from "react"
 import styled from "styled-components"
 
+const StyledBtn = styled.button`
+
+    display: block;
+    position: ${props => (props.showClose ? "fixed" : "absolute")};
+    z-index: 1;
+    top: 15px;
+    right: 10px;
+    background: none;
+    border: none;
+    width: 3rem;
+    height: 2.8rem;
+    margin: 0;
+
+    @media (min-width: 768px) {
+    display: none;
+  }
+`
+
 const Sandwich = styled.div`
-  position: ${props => (props.showClose ? "fixed" : "absolute")};
-  z-index: 1;
-  top: 30px;
-  right: 10px;
   cursor: pointer;
   width: 2rem;
   height: 0.4rem;
@@ -33,22 +47,18 @@ const Sandwich = styled.div`
     transform: translate(0, 0.3rem);
     display: ${props => (props.showClose ? "none" : "block")};
   }
-
-  @media (min-width: 768px) {
-    display: none;
-  }
 `
 
 export const NavIconMobile = ({ handleClick, showClose }) => {
   return (
-    <Sandwich
+    <StyledBtn
       onClick={handleClick}
       showClose={showClose}
-      role="button"
-      tabIndex="0"
       aria-label="Menu"
-      role="button"
       aria-controls="navigation"
-    />
+      aria-expanded={showClose ? 'true' : 'false'}
+    >
+      <Sandwich showClose={showClose} />
+    </StyledBtn>
   )
 }

@@ -106,7 +106,9 @@ const Cart = () => {
         <StyledGatsbyImage fluid={item.image} alt={item.altText} />
         <StyledDivWrapper>
           <StyledDivTextWrap>
-            <StyledParagraph>{item.title}</StyledParagraph>
+            <Link to={item.linkToProduct}>
+              <StyledParagraph>{item.title}</StyledParagraph>
+            </Link>
           </StyledDivTextWrap>
           <StyledSpan>{item.weight}</StyledSpan>
           <QuantityPicker
@@ -119,6 +121,7 @@ const Cart = () => {
         </StyledDivWrapper>
 
         <StyledBtnDelete
+          aria-label="Удалить"
           onClick={() => removeFromCart(item)}
         >
           <FontAwesomeIcon icon={faTimes} />
@@ -136,7 +139,7 @@ const Cart = () => {
         <StyledDivItems>{cartContent}</StyledDivItems>
         <StyledDivTotal>
           <p>Всего: {priceToRubles(total)}</p>
-          <Link to="/checkout">К оплате</Link>
+          <Link to="/checkout">Оформить заказ</Link>
         </StyledDivTotal>
       </StyledSection>
     </>

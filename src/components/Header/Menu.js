@@ -57,7 +57,10 @@ const ListItemDropdown = styled(ListItem)`
     display: none;
   }
 
-  &:hover ul {
+  &:focus-within > ul, // lots of styles, for better navigation from the keyboard
+  & ul:hover,
+  &:hover ul,
+  & ul:focus {
     display: flex;
   }
 
@@ -90,7 +93,8 @@ const SubList = styled(List)`
     & li {
       width: 100%;
 
-      &:hover {
+      &:hover,
+      &:focus-within {
         background-color: #004530;
 
         a {
@@ -101,7 +105,7 @@ const SubList = styled(List)`
   }
 `
 
-export const Menu = ({ isOpen, handleClick }) => {
+export const Menu = ({ isMenuOpen, handleClick }) => {
   const data = useStaticQuery(graphql`
     {
       allSanityCategory {
@@ -123,8 +127,11 @@ export const Menu = ({ isOpen, handleClick }) => {
     if (category.title === "Окара") {
       // maybe not the most slick decision, but I think it's good to keep categories names short in api
       return (
-        <ListItem key={category._id} onClick={handleClick}>
-          <Link to={`/products/${category.slug.current}`}>
+        <ListItem key={category._id} onClick={handleClick} role="none">
+          <Link
+            to={`/products/${category.slug.current}`}
+            role="menuitem"
+          >
             {category.description}
           </Link>
         </ListItem>
@@ -132,30 +139,51 @@ export const Menu = ({ isOpen, handleClick }) => {
     }
 
     return (
-      <ListItem key={category._id} onClick={handleClick}>
-        <Link to={`/products/${category.slug.current}`}>{category.title}</Link>
+      <ListItem key={category._id} onClick={handleClick} role="none">
+        <Link
+          to={`/products/${category.slug.current}`}
+          role="menuitem"
+        >
+          {category.title}
+        </Link>
       </ListItem>
     )
   })
-
+  // the end of the long mapping, actual component return down bellow
   return (
-    <StyledNav isShown={isOpen}>
-      <List>
-        <ListItem onClick={handleClick}>
-          <Link to="/">Главная</Link>
+    <StyledNav isShown={isMenuOpen} role="navigation" id="navigation">
+      <List role="menubar">
+        <ListItem onClick={handleClick} role="none">
+          <Link tabIndex="0" to="/" role="menuitem">
+            Главная
+          </Link>
         </ListItem>
-        <ListItemDropdown>
-          Продукция
-          <SubList>{categories}</SubList>
+        <ListItemDropdown role="none">
+          <Link
+            tabIndex="0"
+            to="#"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Продукция
+          </Link>
+          <SubList role="menu" aria-label="Продукция">
+            {categories}
+          </SubList>
         </ListItemDropdown>
-        <ListItem onClick={handleClick}>
-          <Link to="/about">О нас</Link>
+        <ListItem onClick={handleClick} role="none">
+          <Link tabIndex="0" to="/about" role="menuitem">
+            О нас
+          </Link>
         </ListItem>
-        <ListItem onClick={handleClick}>
-          <Link to="/contacts">Контакты</Link>
+        <ListItem onClick={handleClick} role="none">
+          <Link tabIndex="0" to="/contacts" role="menuitem">
+            Контакты
+          </Link>
         </ListItem>
-        <ListItem onClick={handleClick}>
-          <Link to="/cart">
+        <ListItem onClick={handleClick} role="none">
+          <Link tabIndex="0" to="/cart" aria-label="Корзина" role="menuitem">
             <FontAwesomeIcon icon={faShoppingCart} size="lg" />
           </Link>
         </ListItem>

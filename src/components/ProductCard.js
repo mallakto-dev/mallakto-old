@@ -65,6 +65,7 @@ export const ProductCard = ({
       image,
       altText,
       quantity: 1,
+      linkToProduct: linkTo
     })
   }
 

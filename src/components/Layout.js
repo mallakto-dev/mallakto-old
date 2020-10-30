@@ -2,6 +2,7 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import { Header } from "./Header/Header"
 import { Footer } from "./Footer/Footer"
+import 'focus-visible';
 
 const GlobalStyles = createGlobalStyle`
     
@@ -28,6 +29,16 @@ const GlobalStyles = createGlobalStyle`
         &:hover {
             color: #2c6855;
         }
+    }
+
+    button:focus {
+            outline: 3px solid #1da1f2;
+            outline-offset: 2px;
+        }
+
+
+    .js-focus-visible :focus:not(.focus-visible) {
+        outline: none;
     }
 
 `

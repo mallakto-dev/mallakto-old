@@ -32,7 +32,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <LogoBox />
-      <Menu isOpen={menuOpen} handleClick={clickHandler} />
+      <Menu isMenuOpen={menuOpen} handleClick={clickHandler} />
       <NavIconMobile handleClick={toggleMenu} showClose={menuOpen} />
     </StyledHeader>
   )
