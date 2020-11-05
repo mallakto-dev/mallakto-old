@@ -2,7 +2,7 @@ import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import { Header } from "./Header/Header"
 import { Footer } from "./Footer/Footer"
-import 'focus-visible';
+import "focus-visible"
 
 const GlobalStyles = createGlobalStyle`
     
@@ -29,6 +29,11 @@ const GlobalStyles = createGlobalStyle`
         &:hover {
             color: #2c6855;
         }
+    }
+
+    button, input, select, textarea {
+        font-family: inherit;
+        font-size: 100%;
     }
 
     button:focus {

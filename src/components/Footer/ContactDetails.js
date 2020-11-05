@@ -36,8 +36,8 @@ export const ContactDetails = () => {
       >
         <span>Электродная улица, 2с23, м. Шоссе Энтузиастов</span>
       </a>
-      <a href="tel:8 966 349 25 34">
-        <span>8 966 349 25 34</span>
+      <a href="tel:+7 966 349 25 34">
+        <span>+7 966 349 25 34</span>
       </a>
     </StyledAddress>
   )

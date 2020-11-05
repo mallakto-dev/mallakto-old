@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { SocialLinks } from "./SocialLinks"
+import { SocialLinks } from "../SocialLinks"
 import { ContactDetails } from "./ContactDetails"
 import { LogoBox } from "../LogoBox"
 
@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   padding: 2rem;
   width: 100%;
-  background-color: #6dbd96;
+  background-color: rgb(244 185 169 / 35%);
 
   @media (min-width: 768px) {
     flex-direction: row;

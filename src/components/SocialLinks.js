@@ -7,12 +7,12 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 4.5rem;
+  width: ${props => props.width || "4.5rem"};
 `
 
-export const SocialLinks = () => {
+export const SocialLinks = ({ width }) => {
   return (
-    <StyledDiv>
+    <StyledDiv width={width}>
       <a
         target="_blank"
         rel="noopener noreferrer"

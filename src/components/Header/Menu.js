@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #6dbd96;
+  background-color: rgb(244 185 169);
   height: 100%;
   top: 0;
   left: 0;
