@@ -28,5 +28,9 @@ module.exports = {
         component: require.resolve(`./src/components/Layout.js`),
       },
     },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/cart/*`] },
+    }
   ]
 }

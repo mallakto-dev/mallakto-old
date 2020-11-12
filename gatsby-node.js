@@ -33,6 +33,20 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     return
   }
 
+  const categories = result.data.allSanityCategory.edges.map(({ node }) => node)
+
+  categories.forEach(category => {
+    createPage({
+      path: `/products/${category.slug.current}`,
+      component: require.resolve("./src/templates/categories-graphql.js"),
+      context: {
+        slug: category.slug.current,
+        title: category.description
+      },
+    })
+  })
+
+
   const products = result.data.allSanityProduct.edges.map(({ node }) => node)
 
   products.forEach(product => {
@@ -47,16 +61,4 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     })
   })
 
-  const categories = result.data.allSanityCategory.edges.map(({ node }) => node)
-
-  categories.forEach(category => {
-    createPage({
-      path: `/products/${category.slug.current}`,
-      component: require.resolve("./src/templates/categories-graphql.js"),
-      context: {
-        slug: category.slug.current,
-        title: category.description
-      },
-    })
-  })
 }

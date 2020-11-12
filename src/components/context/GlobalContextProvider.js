@@ -1,4 +1,5 @@
 import React, { createContext } from "react"
+import { toast } from 'react-toastify';
 
 export const GlobalContext = createContext()
 
@@ -70,9 +71,9 @@ class GlobalContextProvider extends React.Component {
       })
     )
 
-    // toast("Товар добавлен в корзину", {
-    //   position: toast.POSITION.TOP_LEFT
-    // })
+    toast("Товар добавлен в корзину", {
+      position: toast.POSITION.TOP_RIGHT
+    })
 
     this.forceUpdate()
   }
@@ -113,6 +114,7 @@ class GlobalContextProvider extends React.Component {
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
           setItemQuantity: this.setItemQuantity,
+          clearCart: this.clearCart
         }}
       >
         {this.props.children}
