@@ -3,6 +3,10 @@ import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
+config.autoAddCss = false
 
 const StyledNav = styled.nav`
   display: ${props => (props.isShown ? "flex" : "none")};

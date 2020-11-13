@@ -2,6 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faVk, faInstagram } from "@fortawesome/free-brands-svg-icons"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
+config.autoAddCss = false
 
 const StyledDiv = styled.div`
   display: flex;
