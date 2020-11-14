@@ -10,6 +10,10 @@ const StyledHeader = styled.header`
   padding: 1rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid #004530;
+  background-color: #fffdfa;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 
   @media (min-width: 768px) {
     display: flex;

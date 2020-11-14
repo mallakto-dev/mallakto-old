@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -37,7 +37,7 @@ const List = styled.ul`
   color: #004530;
 
   @media (min-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     flex-direction: row;
     width: 100%;
     align-items: center;
@@ -58,6 +58,15 @@ const ListItem = styled.li`
 
 const ListItemDropdown = styled(ListItem)`
   & ul {
+    display: ${props => props.isDropdownOpen ? "flex" : "none"};
+  }
+
+
+  @media (min-width: 768px) {
+    position: relative;
+    z-index: 10;
+
+    & ul {
     display: none;
   }
 
@@ -68,9 +77,7 @@ const ListItemDropdown = styled(ListItem)`
     display: flex;
   }
 
-  @media (min-width: 768px) {
-    position: relative;
-    z-index: 10;
+
   }
 `
 
@@ -127,6 +134,12 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
     }
   `)
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    // for better UX on mobile
+  const handleDropdownClick = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
   const categories = data.allSanityCategory.edges.map(({ node: category }) => {
     if (category.title === "Окара") {
       // maybe not the most slick decision, but I think it's good to keep categories names short in api
@@ -162,14 +175,16 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
             Главная
           </Link>
         </ListItem>
-        <ListItemDropdown role="none">
+        <ListItemDropdown role="none" isDropdownOpen={isDropdownOpen}>
           <Link
             tabIndex="0"
             to="#"
             role="menuitem"
             aria-haspopup="true"
-            aria-expanded="false"
+            aria-expanded={isDropdownOpen ? true : false}
+            onClick={handleDropdownClick}
           >
+
             Продукция
           </Link>
           <SubList role="menu" aria-label="Продукция">
