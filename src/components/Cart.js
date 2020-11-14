@@ -11,7 +11,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
 
 const StyledSection = styled.section`
-  margin: 1rem;
+  margin: 6rem 1rem;
 `
 
 const StyledDivItems = styled.div`

@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { ProductCard } from "./ProductCard"
 
 const StyledSection = styled.section`
-  margin: 2rem;
+  margin: 6rem 2rem;
 `
 
 const Grid = styled.ul`

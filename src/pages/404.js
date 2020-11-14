@@ -4,7 +4,7 @@ import { SEO } from "../components/SEO"
 import styled from "styled-components"
 
 const StyledSection = styled.section`
-  margin: 2rem;
+  margin: 6rem 2rem;
 `
 
 const StyledParagraph = styled.p`

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import cows from "../data/images/robert-bye-dOElUitX2Do-unsplash-small.jpg"
 
 const StyledSection = styled.section`
-  margin: 2rem;
+  margin: 6rem 2rem;
 `
 
 const StyledH2 = styled.h2`
