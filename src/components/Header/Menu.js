@@ -74,7 +74,7 @@ const ListItemDropdown = styled(ListItem)`
   & ul:hover,
   &:hover ul,
   & ul:focus {
-    display: flex;
+    display: ${props => props.isDropdownOpen ? "flex" : "none"};
   }
 
 
@@ -175,14 +175,14 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
             Главная
           </Link>
         </ListItem>
-        <ListItemDropdown role="none" isDropdownOpen={isDropdownOpen}>
+        <ListItemDropdown role="none" isDropdownOpen={isDropdownOpen} onClick={handleDropdownClick}>
           <Link
             tabIndex="0"
             to="#"
             role="menuitem"
             aria-haspopup="true"
             aria-expanded={isDropdownOpen ? true : false}
-            onClick={handleDropdownClick}
+            
           >
 
             Продукция
