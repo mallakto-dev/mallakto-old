@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 
 import { LogoBox } from "../LogoBox"
+import { CartIcon } from "./CartIcon"
 import { Menu } from "./Menu"
 import { NavIconMobile } from "./NavIconMobile"
 
@@ -37,6 +38,7 @@ export const Header = () => {
     <StyledHeader>
       <LogoBox />
       <Menu isMenuOpen={menuOpen} handleClick={clickHandler} />
+      <CartIcon />
       <NavIconMobile handleClick={toggleMenu} showClose={menuOpen} />
     </StyledHeader>
   )

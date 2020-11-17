@@ -1,12 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
-import { config } from "@fortawesome/fontawesome-svg-core"
-import "@fortawesome/fontawesome-svg-core/styles.css"
 
-config.autoAddCss = false
 
 const StyledNav = styled.nav`
   display: ${props => (props.isShown ? "flex" : "none")};
@@ -189,11 +184,6 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
         <ListItem onClick={handleClick} role="none">
           <Link tabIndex="0" to="/contacts" role="menuitem">
             Контакты
-          </Link>
-        </ListItem>
-        <ListItem onClick={handleClick} role="none">
-          <Link tabIndex="0" to="/cart" aria-label="Корзина" role="menuitem">
-            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
           </Link>
         </ListItem>
       </List>

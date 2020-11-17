@@ -1,5 +1,5 @@
 import React, { createContext } from "react"
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify"
 
 export const GlobalContext = createContext()
 
@@ -14,8 +14,20 @@ function calculateTotal(cart) {
   return total
 }
 
+function calculateCartItemsCount(cart) {
+  if (cart.length) {
+    const count = cart.reduce((acc, next) => {
+      return acc + next.quantity
+    }, 0)
+    return count
+  } else {
+    return 0
+  }
+}
+
 const initialState = {
   cartItems: [],
+  cartItemsCount: 0,
   total: 0,
 }
 
@@ -40,6 +52,7 @@ class GlobalContextProvider extends React.Component {
       STORAGE_KEY,
       JSON.stringify({
         cartItems,
+        cartItemsCount: calculateCartItemsCount(cartItems),
         total: calculateTotal(cartItems),
       })
     )
@@ -67,12 +80,13 @@ class GlobalContextProvider extends React.Component {
       STORAGE_KEY,
       JSON.stringify({
         cartItems,
+        cartItemsCount: calculateCartItemsCount(cartItems),
         total: calculateTotal(cartItems),
       })
     )
 
     toast("Товар добавлен в корзину", {
-      position: toast.POSITION.TOP_RIGHT
+      position: toast.POSITION.TOP_RIGHT,
     })
 
     this.forceUpdate()
@@ -87,6 +101,7 @@ class GlobalContextProvider extends React.Component {
       STORAGE_KEY,
       JSON.stringify({
         cartItems: cartItems,
+        cartItemsCount: calculateCartItemsCount(cartItems),
         total: calculateTotal(cartItems),
       })
     )
@@ -114,7 +129,7 @@ class GlobalContextProvider extends React.Component {
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
           setItemQuantity: this.setItemQuantity,
-          clearCart: this.clearCart
+          clearCart: this.clearCart,
         }}
       >
         {this.props.children}
