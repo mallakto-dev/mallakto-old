@@ -44,6 +44,7 @@ export const ProductsGrid = () => {
             weight
             categories {
               title
+              index
               slug {
                 current
               }
@@ -67,19 +68,12 @@ export const ProductsGrid = () => {
 
   // sorting prodcution by first category's name
   const sortedByCategory = data.allSanityProduct.edges.sort((a, b) => {
-    let aName = a.node.categories[0].title
-    let bName = b.node.categories[0].title
-
-    if (aName > bName) {
-      return -1
-    }
-    if (aName < bName) {
-      return 1
-    }
-    return 0
+    let aIdx = a.node.categories[0].index
+    let bIdx = b.node.categories[0].index
+    return aIdx - bIdx
   })
 
-  const sortedProducts = data.allSanityProduct.edges.map(
+  const sortedProducts = sortedByCategory.map(
     ({ node: product }) => {
       const { id, title, price, weight, slug, image, categories } = product
       const productUrl = `/products/${categories[0].slug.current}/${slug.current}`

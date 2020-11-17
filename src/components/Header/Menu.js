@@ -124,6 +124,7 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
           node {
             _id
             title
+            index
             slug {
               current
             }
@@ -140,21 +141,9 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
-  const categories = data.allSanityCategory.edges.map(({ node: category }) => {
-    if (category.title === "Окара") {
-      // maybe not the most slick decision, but I think it's good to keep categories names short in api
-      return (
-        <ListItem key={category._id} onClick={handleClick} role="none">
-          <Link
-            to={`/products/${category.slug.current}`}
-            role="menuitem"
-          >
-            {category.description}
-          </Link>
-        </ListItem>
-      )
-    }
+  const sortedCategories = data.allSanityCategory.edges.sort((a,b) => a.node.index - b.node.index)
 
+  const categories = sortedCategories.map(({ node: category }) => {
     return (
       <ListItem key={category._id} onClick={handleClick} role="none">
         <Link
@@ -166,7 +155,8 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
       </ListItem>
     )
   })
-  // the end of the long mapping, actual component return down bellow
+ 
+  // return of Menu component
   return (
     <StyledNav isShown={isMenuOpen} role="navigation" id="navigation">
       <List role="menubar">
