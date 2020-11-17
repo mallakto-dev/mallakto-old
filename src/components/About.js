@@ -5,7 +5,12 @@ import styled from "styled-components"
 import cows from "../data/images/robert-bye-dOElUitX2Do-unsplash-small.jpg"
 
 const StyledSection = styled.section`
-  margin: 6rem 2rem;
+  margin: 6rem .6rem;
+
+
+  @media (min-width: 768px) {
+    margin: 6rem 2rem;
+  }
 `
 
 const StyledH2 = styled.h2`
@@ -25,29 +30,39 @@ const StyledDiv__wrapper = styled.div`
 `
 
 const StyledImage = styled.img`
-  width: 16rem;
+  width: 18rem;
   align-self: center;
+  clip-path: circle(39%);
 
   @media (min-width: 768px) {
     width: 25rem;
-    clip-path: circle(39%);
   }
 `
 
 const StyledDiv__text = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: justify;
+  text-align: center;
   width: 100%;
   color: #004530;
 
   @media (min-width: 768px) {
     width: 50%;
+    
+  }
+
+  @media (min-width: 998px) {
+    text-align: justify;
   }
 `
 
 const StyledParagraph = styled.p`
   font-size: 1.1rem;
+  letter-spacing: 1px;
+
+  @media (min-width: 768px) {
+    letter-spacing: 1px;
+  }
 `
 
 export const About = ({ showFull }) => {
