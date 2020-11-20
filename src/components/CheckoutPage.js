@@ -128,7 +128,7 @@ export const CheckoutPage = () => {
     }
     try {
       const response = await fetch(
-        "http://localhost:3000/checkout",
+        "https://mallakto.ru/mailer/checkout",
         requestOptions
       )
       if (response.ok) {
