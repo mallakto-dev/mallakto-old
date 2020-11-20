@@ -41,11 +41,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       component: require.resolve("./src/templates/categories-graphql.js"),
       context: {
         slug: category.slug.current,
-        title: category.description
+        title: category.description,
       },
     })
   })
-
 
   const products = result.data.allSanityProduct.edges.map(({ node }) => node)
 
@@ -60,5 +59,4 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       },
     })
   })
-
 }

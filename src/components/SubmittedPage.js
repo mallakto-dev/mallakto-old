@@ -18,9 +18,7 @@ export const SubmittedPage = () => {
     <StyledSection>
       <SEO title="Спасибо за заказ!| Mallakto" />
       <h1>Ваш заказ был успешно отправлен!</h1>
-      <StyledParagraph>
-        Мы свяжемся с вами в ближайшее время. 
-      </StyledParagraph>
+      <StyledParagraph>Мы свяжемся с вами в ближайшее время.</StyledParagraph>
       <Link to="/"> На главную </Link>
     </StyledSection>
   )

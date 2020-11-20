@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Link, navigate } from "gatsby"
 import { useForm } from "react-hook-form"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid"
 import { SEO } from "./SEO"
 import styled from "styled-components"
 import { GlobalContext } from "./context/GlobalContextProvider"
@@ -79,10 +79,7 @@ const StyledBtn = styled.button`
 `
 
 export const CheckoutPage = () => {
-
-  const { cartItems, total, clearCart } = useContext(
-    GlobalContext
-  )
+  const { cartItems, total, clearCart } = useContext(GlobalContext)
 
   const { register, handleSubmit, watch, errors } = useForm({
     mode: "onBlur",
@@ -90,12 +87,14 @@ export const CheckoutPage = () => {
 
   // filters the data which is needed to proccess the order
   const orderEssentials = cartItems.map(item => {
-    const { title, weight, price, quantity } = item;
+    const { title, weight, price, quantity } = item
     return {
-      title, weight, price, quantity
+      title,
+      weight,
+      price,
+      quantity,
     }
   })
-
 
   const watchDelivery = watch("delivery", false)
 
@@ -112,13 +111,18 @@ export const CheckoutPage = () => {
     e.target.value = normalizePhoneNumber(e.target.value)
   }
 
-  const sendOrder = async (data) => {
-    let dataToSend = JSON.stringify({...data, order: orderEssentials, total, orderId: uuidv4() });
+  const sendOrder = async data => {
+    let dataToSend = JSON.stringify({
+      ...data,
+      order: orderEssentials,
+      total,
+      orderId: uuidv4(),
+    })
     const requestOptions = {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: dataToSend,
     }
@@ -127,9 +131,9 @@ export const CheckoutPage = () => {
         "http://localhost:3000/checkout",
         requestOptions
       )
-      if(response.ok) {
-        clearCart();
-        navigate('/cart/checkout/submitted')
+      if (response.ok) {
+        clearCart()
+        navigate("/cart/checkout/submitted")
       } else {
         alert(response.statusText)
       }
@@ -139,12 +143,11 @@ export const CheckoutPage = () => {
   }
 
   const onSubmit = async data => {
-    let answerFromServer = await sendOrder(data);
+    let answerFromServer = await sendOrder(data)
 
-    if(answerFromServer) {
-      navigate('/success');
+    if (answerFromServer) {
+      navigate("/success")
     }
-
   }
 
   return (
@@ -270,4 +273,3 @@ export const CheckoutPage = () => {
     </StyledSection>
   )
 }
-

@@ -74,7 +74,7 @@ export const pageQuery = graphql`
       nutritonal_facts
       bestBefore
       price
-      weight,
+      weight
       image {
         alt
         asset {
@@ -104,7 +104,11 @@ const Product = ({ data, pageContext }) => {
   }
 
   const handleClick = () => {
-    addToCart({ ...product, quantity: numberOfitems, linkToProduct: pageContext.slug })
+    addToCart({
+      ...product,
+      quantity: numberOfitems,
+      linkToProduct: pageContext.slug,
+    })
   }
 
   return (

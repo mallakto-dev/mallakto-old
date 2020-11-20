@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-
 const StyledNav = styled.nav`
   display: ${props => (props.isShown ? "flex" : "none")};
   position: fixed;
@@ -53,26 +52,23 @@ const ListItem = styled.li`
 
 const ListItemDropdown = styled(ListItem)`
   & ul {
-    display: ${props => props.isDropdownOpen ? "flex" : "none"};
+    display: ${props => (props.isDropdownOpen ? "flex" : "none")};
   }
-
 
   @media (min-width: 768px) {
     position: relative;
     z-index: 10;
 
     & ul {
-    display: none;
-  }
+      display: none;
+    }
 
-  &:focus-within > ul, // lots of styles, for better navigation from the keyboard
+    &:focus-within > ul, // lots of styles, for better navigation from the keyboard
   & ul:hover,
   &:hover ul,
   & ul:focus {
-    display: ${props => props.isDropdownOpen ? "flex" : "none"};
-  }
-
-
+      display: ${props => (props.isDropdownOpen ? "flex" : "none")};
+    }
   }
 `
 
@@ -131,26 +127,25 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
   `)
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    // for better UX on mobile
+  // for better UX on mobile
   const handleDropdownClick = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
-  const sortedCategories = data.allSanityCategory.edges.sort((a,b) => a.node.index - b.node.index)
+  const sortedCategories = data.allSanityCategory.edges.sort(
+    (a, b) => a.node.index - b.node.index
+  )
 
   const categories = sortedCategories.map(({ node: category }) => {
     return (
       <ListItem key={category._id} onClick={handleClick} role="none">
-        <Link
-          to={`/products/${category.slug.current}`}
-          role="menuitem"
-        >
+        <Link to={`/products/${category.slug.current}`} role="menuitem">
           {category.title}
         </Link>
       </ListItem>
     )
   })
- 
+
   // return of Menu component
   return (
     <StyledNav isShown={isMenuOpen} role="navigation" id="navigation">
@@ -160,16 +155,18 @@ export const Menu = ({ isMenuOpen, handleClick }) => {
             Главная
           </Link>
         </ListItem>
-        <ListItemDropdown role="none" isDropdownOpen={isDropdownOpen} onClick={handleDropdownClick}>
+        <ListItemDropdown
+          role="none"
+          isDropdownOpen={isDropdownOpen}
+          onClick={handleDropdownClick}
+        >
           <Link
             tabIndex="0"
             to="#"
             role="menuitem"
             aria-haspopup="true"
             aria-expanded={isDropdownOpen ? true : false}
-            
           >
-
             Продукция
           </Link>
           <SubList role="menu" aria-label="Продукция">

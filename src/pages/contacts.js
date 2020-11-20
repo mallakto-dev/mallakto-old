@@ -67,7 +67,7 @@ const ContactsPage = () => {
               <a href="mailto:chefirkin@gmail.com">chefirkin@gmail.com</a>
             </p>
           </div>
-          <SocialLinks width="5.2rem"/>
+          <SocialLinks width="5.2rem" />
         </StyledDiv>
       </StyledSection>
     </>

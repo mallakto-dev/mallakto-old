@@ -9,7 +9,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { priceToRubles } from "../utils/priceToRubles"
 import { GlobalContext } from "./context/GlobalContextProvider"
 
-
 config.autoAddCss = false
 
 const StyledListItem = styled.li`
@@ -70,7 +69,7 @@ export const ProductCard = ({
       image,
       altText,
       quantity: 1,
-      linkToProduct: linkTo
+      linkToProduct: linkTo,
     })
   }
 

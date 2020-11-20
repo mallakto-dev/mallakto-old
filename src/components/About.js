@@ -5,8 +5,7 @@ import styled from "styled-components"
 import cows from "../data/images/robert-bye-dOElUitX2Do-unsplash-small.jpg"
 
 const StyledSection = styled.section`
-  margin: 6rem .6rem;
-
+  margin: 6rem 0.6rem;
 
   @media (min-width: 768px) {
     margin: 6rem 2rem;
@@ -48,7 +47,6 @@ const StyledDiv__text = styled.div`
 
   @media (min-width: 768px) {
     width: 50%;
-    
   }
 
   @media (min-width: 998px) {

@@ -73,25 +73,23 @@ export const ProductsGrid = () => {
     return aIdx - bIdx
   })
 
-  const sortedProducts = sortedByCategory.map(
-    ({ node: product }) => {
-      const { id, title, price, weight, slug, image, categories } = product
-      const productUrl = `/products/${categories[0].slug.current}/${slug.current}`
+  const sortedProducts = sortedByCategory.map(({ node: product }) => {
+    const { id, title, price, weight, slug, image, categories } = product
+    const productUrl = `/products/${categories[0].slug.current}/${slug.current}`
 
-      return (
-        <ProductCard
-          key={id}
-          id={id}
-          title={title}
-          price={price}
-          weight={weight}
-          image={image.asset.fluid}
-          altText={image.alt}
-          linkTo={productUrl}
-        />
-      )
-    }
-  )
+    return (
+      <ProductCard
+        key={id}
+        id={id}
+        title={title}
+        price={price}
+        weight={weight}
+        image={image.asset.fluid}
+        altText={image.alt}
+        linkTo={productUrl}
+      />
+    )
+  })
 
   return (
     <StyledSection>

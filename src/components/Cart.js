@@ -9,7 +9,6 @@ import { QuantityPicker } from "../components/QuantityPicker"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
-
 const StyledSection = styled.section`
   margin: 6rem 1rem;
 `

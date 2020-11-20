@@ -1,13 +1,12 @@
 import React from "react"
 import styled, { createGlobalStyle } from "styled-components"
-import {  ToastContainer, toast, Slide } from 'react-toastify'
+import { ToastContainer, toast, Slide } from "react-toastify"
 import { Header } from "./Header/Header"
 import { Footer } from "./Footer/Footer"
 import "focus-visible"
-import 'react-toastify/dist/ReactToastify.min.css';
+import "react-toastify/dist/ReactToastify.min.css"
 
-
-toast.configure();
+toast.configure()
 
 const GlobalStyles = createGlobalStyle`
     
@@ -54,16 +53,16 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const StyledContainer = styled(ToastContainer).attrs({
-  toastClassName: 'toast',
+  toastClassName: "toast",
 })`
   .toast {
     width: 100%;
     background-color: rgb(244 185 169 / 90%);
     color: #004530;
-    font-family: 'Manrope', sans-serif;
+    font-family: "Manrope", sans-serif;
     font-size: 1.1rem;
   }
-`;
+`
 
 const Container = styled.main`
   width: 100%;
@@ -80,7 +79,13 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <Header />
-      <StyledContainer autoClose={3000} hideProgressBar={true} newestOnTop={true} limit={5} transition={Slide}/>
+      <StyledContainer
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        limit={5}
+        transition={Slide}
+      />
       <Container>{children}</Container>
       <Footer />
     </>
