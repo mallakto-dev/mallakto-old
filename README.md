@@ -33,7 +33,7 @@ Utilities:
 - react-toastify
 - [focus-visible](https://github.com/WICG/focus-visible)
 - [libphonenumber-js](https://gitlab.com/catamphetamine/libphonenumber-js#readme)
-- uuid
+- nanoid
 
 Styles:
 

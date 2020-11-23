@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Link, navigate } from "gatsby"
 import { useForm } from "react-hook-form"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
-import { v4 as uuidv4 } from "uuid"
+import { nanoid } from "nanoid"
 import { SEO } from "./SEO"
 import styled from "styled-components"
 import { GlobalContext } from "./context/GlobalContextProvider"
@@ -116,7 +116,7 @@ export const CheckoutPage = () => {
       ...data,
       order: orderEssentials,
       total,
-      orderId: uuidv4(),
+      orderId: nanoid(4),
     })
     const requestOptions = {
       method: "POST",
