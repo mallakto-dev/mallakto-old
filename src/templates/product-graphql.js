@@ -75,6 +75,10 @@ export const pageQuery = graphql`
       bestBefore
       price
       weight
+      metaContent {
+        keywords
+        description
+      }
       image {
         alt
         asset {
@@ -113,7 +117,7 @@ const Product = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`${product.title} | Mallakto`} />
+      <SEO title={`${product.title} | Mallakto`} description={product.metaContent.description} keywords={product.metaContent.keywords} />
       <StyledSection>
         <StyledImage fluid={product.image.asset.fluid} alt={product.title} />
         <StyledDiv>

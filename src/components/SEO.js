@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-export const SEO = ({ title, description }) => {
+export const SEO = ({ title, description, keywords }) => {
   return (
     <Helmet htmlAttributes={{ lang: "ru" }}>
       <title>{title}</title>
@@ -22,7 +22,7 @@ export const SEO = ({ title, description }) => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="веганство веган продукты кооператив маллакто Москва"
+        content={keywords || "веганство веган продукты кооператив маллакто Москва"}
       />
     </Helmet>
   )
