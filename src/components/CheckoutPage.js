@@ -78,6 +78,10 @@ const StyledBtn = styled.button`
   }
 `
 
+const StyledParagraph = styled.p`
+  font-size: 0.9rem;
+`
+
 export const CheckoutPage = () => {
   const { cartItems, total, clearCart } = useContext(GlobalContext)
 
@@ -236,6 +240,11 @@ export const CheckoutPage = () => {
                 reg={register({ required: "Введите адрес доставки" })}
               />
               {errors.address && <p role="alert">{errors.address.message}</p>}
+              <StyledParagraph role="alert">
+                Доставка в пределах МКАД - 300 &#8381;. Доставка за пределами
+                МКАД рассчитывается отдельно. Стоимость доставки не входит в
+                сумму заказа.
+              </StyledParagraph>
             </StyledDiv>
           )}
         </StyledFieldset>
