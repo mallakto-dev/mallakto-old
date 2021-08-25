@@ -2,6 +2,7 @@ import React from "react"
 import { SEO } from "../components/SEO"
 import { About } from "../components/About"
 import { ProductsGrid } from "../components/ProductsGrid"
+import { LegalDisclaimer } from "../components/LegalDisclaimer"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       />
       <About showFull={false} />
       <ProductsGrid />
+      <LegalDisclaimer />
     </>
   )
 }
