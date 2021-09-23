@@ -241,7 +241,7 @@ export const CheckoutPage = () => {
               />
               {errors.address && <p role="alert">{errors.address.message}</p>}
               <StyledParagraph role="alert">
-                Доставка в пределах МКАД - 300 &#8381;. Доставка за пределами
+                Доставка в пределах МКАД - 400 &#8381;. Доставка за пределами
                 МКАД рассчитывается отдельно. Стоимость доставки не входит в
                 сумму заказа.
               </StyledParagraph>
