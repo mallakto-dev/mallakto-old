@@ -18,7 +18,7 @@ const StyledH2 = styled.h2`
   font-size: 2rem;
 `
 
-const StyledDiv__wrapper = styled.div`
+const StyledDivWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ const StyledImage = styled.img`
   }
 `
 
-const StyledDiv__text = styled.div`
+const StyledDivText = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -65,7 +65,7 @@ const StyledParagraph = styled.p`
 
 export const About = ({ showFull }) => {
   const textContent = showFull ? (
-    <StyledDiv__text>
+    <StyledDivText>
       <StyledParagraph>
         Вас приветствует московский веган-кооператив Mallakto!
       </StyledParagraph>
@@ -88,9 +88,9 @@ export const About = ({ showFull }) => {
         Приглашаем к сотрудничеству физ. и юр. лиц.
       </StyledParagraph>
       <StyledParagraph>Go Vegan!</StyledParagraph>
-    </StyledDiv__text>
+    </StyledDivText>
   ) : (
-    <StyledDiv__text>
+    <StyledDivText>
       <StyledParagraph>
         Вас приветствует московский веган-кооператив Mallakto!
       </StyledParagraph>
@@ -101,16 +101,16 @@ export const About = ({ showFull }) => {
       </StyledParagraph>
       <StyledParagraph>Go Vegan!</StyledParagraph>
       <Link to={"/about"}>Читать далее...</Link>
-    </StyledDiv__text>
+    </StyledDivText>
   )
 
   return (
     <StyledSection>
       {!showFull && <StyledH2>О нас</StyledH2>}
-      <StyledDiv__wrapper>
+      <StyledDivWrapper>
         <StyledImage src={cows} alt={"Фото коров на лужайке"} />
         {textContent}
-      </StyledDiv__wrapper>
+      </StyledDivWrapper>
     </StyledSection>
   )
 }

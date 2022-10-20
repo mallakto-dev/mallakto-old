@@ -55,9 +55,7 @@ export const ProductsGrid = () => {
             image {
               alt
               asset {
-                fluid(maxWidth: 288, maxHeight: 223) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 288, height: 223)
               }
             }
           }
@@ -84,7 +82,7 @@ export const ProductsGrid = () => {
         title={title}
         price={price}
         weight={weight}
-        image={image.asset.fluid}
+        image={image.asset.gatsbyImageData}
         altText={image.alt}
         linkTo={productUrl}
       />

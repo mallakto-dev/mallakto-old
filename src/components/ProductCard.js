@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -77,7 +77,7 @@ export const ProductCard = ({
     <StyledListItem>
       <StyledDiv>
         <Link to={linkTo}>
-          <Image fluid={image} alt={altText} />
+          <GatsbyImage image={image} alt={altText}/>
           <h3>{title}</h3>
         </Link>
         <StyledParagraph>{weight}</StyledParagraph>

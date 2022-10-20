@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { SEO } from "./SEO"
+import { Seo } from "./Seo"
 import styled from "styled-components"
 
 const StyledSection = styled.section`
@@ -16,7 +16,7 @@ const StyledParagraph = styled.p`
 export const SubmittedPage = () => {
   return (
     <StyledSection>
-      <SEO title="Спасибо за заказ!| Mallakto" />
+      <Seo title="Спасибо за заказ!| Mallakto" />
       <h1>Ваш заказ был успешно отправлен!</h1>
       <StyledParagraph>Мы свяжемся с вами в ближайшее время.</StyledParagraph>
       <Link to="/"> На главную </Link>

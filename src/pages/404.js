@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { SEO } from "../components/SEO"
+import { Seo } from "../components/Seo"
 import styled from "styled-components"
 
 const StyledSection = styled.section`
@@ -15,7 +15,7 @@ const StyledParagraph = styled.p`
 const NotFound = () => {
   return (
     <StyledSection>
-      <SEO title="404 | Mallakto" />
+      <Seo title="404 | Mallakto" />
       <StyledParagraph>
         Увы, такой страницы нет... Попробуйте верунуться на главную.
       </StyledParagraph>

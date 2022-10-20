@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { SEO } from "../components/SEO"
+import { Seo } from "../components/Seo"
 import { SocialLinks } from "../components/SocialLinks"
 
 const StyledSection = styled.section`
@@ -30,7 +30,7 @@ const StyledSpan = styled.span`
 const ContactsPage = () => {
   return (
     <>
-      <SEO
+      <Seo
         title="Контакты | Mallakto"
         description="Московский веган-кооператив Mallakto"
       />

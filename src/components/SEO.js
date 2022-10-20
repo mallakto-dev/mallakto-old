@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-export const SEO = ({ title, description, keywords }) => {
+export const Seo = ({ title, description, keywords }) => {
   return (
     <Helmet htmlAttributes={{ lang: "ru" }}>
       <title>{title}</title>

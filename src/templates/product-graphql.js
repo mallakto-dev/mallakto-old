@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
-import { SEO } from "../components/SEO"
+import { Seo } from "../components/Seo"
 import { QuantityPicker } from "../components/QuantityPicker"
 import { priceToRubles } from "../utils/priceToRubles"
 import { GlobalContext } from "../components/context/GlobalContextProvider"
@@ -15,7 +15,7 @@ const StyledSection = styled.section`
   margin: 2rem;
 
   & > * {
-    /*  hack for gatsby-image, without flex-grow image disappears on a big screens */
+    /*  hack for gatsby-plugin-image, without flex-grow image disappears on a big screens */
     flex-grow: 1;
   }
 
@@ -26,7 +26,7 @@ const StyledSection = styled.section`
   }
 `
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(GatsbyImage)`
   @media (min-width: 1200px) {
     width: 25rem;
   }
@@ -82,9 +82,7 @@ export const pageQuery = graphql`
       image {
         alt
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         }
       }
     }
@@ -117,9 +115,13 @@ const Product = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`${product.title} | Mallakto`} description={product.metaContent.description} keywords={product.metaContent.keywords} />
+      <Seo
+        title={`${product.title} | Mallakto`}
+        description={product.metaContent.description}
+        keywords={product.metaContent.keywords}
+      />
       <StyledSection>
-        <StyledImage fluid={product.image.asset.fluid} alt={product.title} />
+        <StyledImage image={product.image.asset.gatsbyImageData} alt={product.title} />
         <StyledDiv>
           <h1>{product.title}</h1>
           <StyledSpan>{priceInRub}</StyledSpan>

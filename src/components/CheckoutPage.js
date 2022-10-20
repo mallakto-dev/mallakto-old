@@ -3,7 +3,7 @@ import { Link, navigate } from "gatsby"
 import { useForm } from "react-hook-form"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 import { nanoid } from "nanoid"
-import { SEO } from "./SEO"
+import { Seo } from "./Seo"
 import styled from "styled-components"
 import { GlobalContext } from "./context/GlobalContextProvider"
 import { Input } from "./Input"
@@ -124,7 +124,7 @@ export const CheckoutPage = () => {
     })
     const requestOptions = {
       method: "POST",
-      headers: {
+      Seoers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -156,7 +156,7 @@ export const CheckoutPage = () => {
 
   return (
     <StyledSection>
-      <SEO title="Оформить заказ | Mallakto" />
+      <Seo title="Оформить заказ | Mallakto" />
       <StyledH1 id="form-title">Оформить заказ</StyledH1>
       <StyledForm
         aria-labelledby="form-title"

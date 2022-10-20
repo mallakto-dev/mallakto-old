@@ -1,11 +1,11 @@
 import React from "react"
-import { SEO } from "../components/SEO"
+import { Seo } from "../components/Seo"
 import { About } from "../components/About"
 
 const AboutPage = () => {
   return (
     <>
-      <SEO
+      <Seo
         title="О нас | Mallakto"
         description="Московский веган-кооператив Mallakto"
       />

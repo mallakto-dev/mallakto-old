@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
 import { Link } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { SEO } from "../components/SEO"
+import { Seo } from "./Seo"
 import { GlobalContext } from "../components/context/GlobalContextProvider"
 import { priceToRubles } from "../utils/priceToRubles"
 import { QuantityPicker } from "../components/QuantityPicker"
@@ -27,12 +27,12 @@ const StyledDivItem = styled.div`
   border-bottom: 1px solid #e2e8f0;
 
   & > * {
-    /* weird hack for gatsby-image, without flex-grow image disappears on a big screens */
+    /* weird hack for gatsby-plugin-image, without flex-grow image disappears on a big screens */
     flex-grow: 1;
   }
 `
 
-const StyledGatsbyImage = styled(Image)`
+const StyledGatsbyImage = styled(GatsbyImage)`
   min-width: 6rem;
 `
 
@@ -132,7 +132,7 @@ export const Cart = ({ setIsProceedOrder }) => {
 
   return (
     <>
-      <SEO title="Корзина | Mallakto" />
+      <Seo title="Корзина | Mallakto" />
       <StyledSection>
         <h1>Корзина</h1>
         {cartItems.length === 0 && <p>Корзина пуста</p>}

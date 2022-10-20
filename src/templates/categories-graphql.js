@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { ProductCard } from "../components/ProductCard"
-import { SEO } from "../components/SEO"
+import { Seo } from "../components/Seo"
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -28,9 +28,7 @@ export const pageQuery = graphql`
           image {
             alt
             asset {
-              fluid(maxWidth: 288, maxHeight: 223) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED,  width: 288, height: 223)
             }
           }
         }
@@ -82,7 +80,7 @@ const CategoryGrid = ({ data, pageContext }) => {
         title={title}
         price={price}
         weight={weight}
-        image={image.asset.fluid}
+        image={image.asset.gatsbyImageData}
         altText={image.alt}
         linkTo={productUrl}
       />
@@ -91,7 +89,7 @@ const CategoryGrid = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO title={`${pageContext.title} | Mallakto`} />
+      <Seo title={`${pageContext.title} | Mallakto`} />
       <StyledSection>
         <StyledH2>{categoryTitle}</StyledH2>
         <Grid>{products}</Grid>
