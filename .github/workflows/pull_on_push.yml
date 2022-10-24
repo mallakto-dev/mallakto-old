@@ -12,7 +12,6 @@ jobs:
         host: ${{ secrets.IP }}
         username: ${{ secrets.USER }}
         password: ${{ secrets.PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
         script: |
           cd mallakto
           git pull
