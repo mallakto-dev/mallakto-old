@@ -103,7 +103,7 @@ export const Cart = ({ setIsProceedOrder }) => {
   const cartContent = cartItems.map(item => {
     return (
       <StyledDivItem key={item.id}>
-        <StyledGatsbyImage fluid={item.image} alt={item.altText} />
+        <StyledGatsbyImage image={item.image} alt={item.altText} />
         <StyledDivWrapper>
           <StyledDivTextWrap>
             <Link to={item.linkToProduct}>

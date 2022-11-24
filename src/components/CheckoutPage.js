@@ -124,7 +124,7 @@ export const CheckoutPage = () => {
     })
     const requestOptions = {
       method: "POST",
-      Seoers: {
+      headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -132,7 +132,7 @@ export const CheckoutPage = () => {
     }
     try {
       const response = await fetch(
-        "https://mallakto.ru/mailer/checkout",
+        "http://localhost:3000/checkout",
         requestOptions
       )
       if (response.ok) {
