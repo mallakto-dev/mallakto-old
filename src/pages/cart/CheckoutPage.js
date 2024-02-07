@@ -175,13 +175,15 @@ const CheckoutPage = () => {
               label="Имя"
               id="input-name"
               invalid={errors.nameInput ? "true" : "false"}
-              {...register("nameInput", {
-                required: "Введите Ваше имя",
-                pattern: {
-                  value: /^([^0-9]*)$/,
-                  message: 'Поле "Имя" может содержать только буквы',
-                },
-              })}
+              reg={{
+                ...register("nameInput", {
+                  required: "Введите Ваше имя",
+                  pattern: {
+                    value: /^([^0-9]*)$/,
+                    message: 'Поле "Имя" может содержать только буквы',
+                  },
+                }),
+              }}
             />
             {errors.nameInput && <p role="alert">{errors.nameInput.message}</p>}
             <Input
@@ -189,9 +191,11 @@ const CheckoutPage = () => {
               id="input-phone"
               label="Телефон"
               invalid={errors.phone ? "true" : "false"}
-              {...register("phone", {
-                required: "Введите номер, по которому можно с Вами связаться",
-              })}
+              reg={{
+                ...register("phone", {
+                  required: "Введите номер, по которому можно с Вами связаться",
+                }),
+              }}
               handleChange={handleChange}
             />
             {errors.phone && <p role="alert">{errors.phone.message}</p>}
@@ -200,7 +204,7 @@ const CheckoutPage = () => {
               id="input-email"
               label="Email"
               name="email"
-              {...register}
+              reg={{ ...register }}
             />
           </StyledDiv>
         </StyledFieldset>
@@ -214,7 +218,7 @@ const CheckoutPage = () => {
               name="delivery"
               invalid={errors.delivery ? "true" : "false"}
               id="input-delivery-true"
-              {...register("delivery", { required: true })}
+              reg={{ ...register("delivery", { required: true }) }}
             />
 
             <Input
@@ -222,7 +226,7 @@ const CheckoutPage = () => {
               label="Самовывоз"
               invalid={errors.delivery ? "true" : "false"}
               id="input-delivery-false"
-              {...register("delivery", { required: true })}
+              reg={{ ...register("delivery", { required: true }) }}
             />
 
             {errors.delivery && (
@@ -238,7 +242,11 @@ const CheckoutPage = () => {
                 type="text"
                 label="Адрес"
                 id="input-address"
-                {...register("address", { required: "Введите адрес доставки" })}
+                reg={{
+                  ...register("address", {
+                    required: "Введите адрес доставки",
+                  }),
+                }}
               />
               {errors.address && <p role="alert">{errors.address.message}</p>}
               <StyledParagraph role="alert">
@@ -259,7 +267,7 @@ const CheckoutPage = () => {
               id="input-payment-transfer"
               name="payment"
               invalid={errors.payment ? "true" : "false"}
-              {...register("payment", { required: true })}
+              reg={{ ...register("payment", { required: true }) }}
             />
 
             <Input
@@ -267,7 +275,7 @@ const CheckoutPage = () => {
               label="Наличные"
               id="input-payment-cash"
               invalid={errors.payment ? "true" : "false"}
-              {...register("payment", { required: true })}
+              reg={{ ...register("payment", { required: true }) }}
             />
             {errors.payment && (
               <p role="alert">"Выберите удобный Вам способ оплаты"</p>
