@@ -8,7 +8,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-advanced-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
@@ -47,10 +46,6 @@ module.exports = {
         component: require.resolve(`./src/components/Layout.js`),
       },
     },
-    {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/cart/*`] },
-    },
     `gatsby-plugin-image`,
   ],
-}
+};

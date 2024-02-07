@@ -1,12 +1,10 @@
-import React from "react"
-import styled, { createGlobalStyle } from "styled-components"
-import { ToastContainer, toast, Slide } from "react-toastify"
-import { Header } from "./Header/Header"
-import { Footer } from "./Footer/Footer"
-import "focus-visible"
-import "react-toastify/dist/ReactToastify.min.css"
-
-toast.configure()
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import { ToastContainer, Slide } from "react-toastify";
+import { Header } from "./Header/Header";
+import { Footer } from "./Footer/Footer";
+import "focus-visible";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const GlobalStyles = createGlobalStyle`
     
@@ -50,7 +48,7 @@ const GlobalStyles = createGlobalStyle`
         outline: none;
     }
 
-`
+`;
 
 const StyledContainer = styled(ToastContainer).attrs({
   toastClassName: "toast",
@@ -62,7 +60,7 @@ const StyledContainer = styled(ToastContainer).attrs({
     font-family: "Manrope", sans-serif;
     font-size: 1.1rem;
   }
-`
+`;
 
 const Container = styled.main`
   width: 100%;
@@ -72,7 +70,7 @@ const Container = styled.main`
     width: 80%;
     margin: 0 auto;
   }
-`
+`;
 
 const Layout = ({ children }) => {
   return (
@@ -89,7 +87,7 @@ const Layout = ({ children }) => {
       <Container>{children}</Container>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
