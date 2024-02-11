@@ -1,5 +1,5 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import React from "react";
+import { Helmet } from "react-helmet";
 
 export const Seo = ({ title, description, keywords }) => {
   return (
@@ -22,8 +22,10 @@ export const Seo = ({ title, description, keywords }) => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content={keywords || "веганство веган продукты кооператив маллакто Москва"}
+        content={
+          keywords || "веганство веган продукты кооператив маллакто Москва"
+        }
       />
     </Helmet>
-  )
-}
+  );
+};

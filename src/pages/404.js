@@ -1,16 +1,16 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Seo } from "../components/Seo"
-import styled from "styled-components"
+import React from "react";
+import { Link } from "gatsby";
+import { Seo } from "../components/Seo";
+import styled from "styled-components";
 
 const StyledSection = styled.section`
   margin: 6rem 2rem;
-`
+`;
 
 const StyledParagraph = styled.p`
   font-size: 1.4rem;
   font-weight: 600;
-`
+`;
 
 const NotFound = () => {
   return (
@@ -21,7 +21,7 @@ const NotFound = () => {
       </StyledParagraph>
       <Link to="/"> На главную </Link>
     </StyledSection>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;
