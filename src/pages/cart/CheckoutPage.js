@@ -203,8 +203,7 @@ const CheckoutPage = () => {
               type="email"
               id="input-email"
               label="Email"
-              name="email"
-              reg={{ ...register }}
+              reg={{ ...register("email", { required: true }) }}
             />
           </StyledDiv>
         </StyledFieldset>
